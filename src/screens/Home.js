@@ -1,7 +1,7 @@
 import './Home.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useUser } from '../context/useUser';
+import { useUser } from '../context/useUser.js';
 
 const url = 'http://localhost:3001'
 

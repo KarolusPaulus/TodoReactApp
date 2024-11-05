@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt'
-import { insertUser, selectUserByEmail } from '../models/User'
-import { ApiError } from '../helpers/ApiError'
+import { insertUser, selectUserByEmail } from '../models/User.js'
+import { ApiError } from '../helpers/ApiError.js'
 
 const postRegistration = async(req, res, next) => {
     try {
