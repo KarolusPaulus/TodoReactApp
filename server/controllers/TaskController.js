@@ -1,6 +1,5 @@
 import { emptyOrRows } from "../helpers/utils.js"
-import { selectAllTasks } from "../models/Task.js"
-import { insertTask } from '../models/Task.js'
+import { selectAllTasks, insertTask, deleteTaskById } from "../models/Task.js"
 
 const getTasks = async (req, res, next) => {
     try {
@@ -25,4 +24,18 @@ const postTask = async(req, res, next) => {
     }
 }
 
-export { getTasks, postTask }
+const deleteTask = async(req, res, next) => {
+    try {
+        const result = await deleteTaskById(req.params.id)
+        if (result.rowCount === 0) {
+            const error = new Error('Task not found')
+            error.statusCode = 400
+            return next(error)
+        }
+        return res.status(200).json({ message: 'Task deleted successfully' })
+    } catch (error) {
+        return next(error)
+    }
+}
+
+export { getTasks, postTask, deleteTask }

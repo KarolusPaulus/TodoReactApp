@@ -9,7 +9,7 @@ function Home() {
   const { user } = useUser()
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
-
+  
   useEffect(() => {
     axios.get(url)
       .then(response => {
@@ -61,7 +61,7 @@ function Home() {
       <ul>
         {
           tasks.map(item => (
-            <li key = {item}>{item.description}
+            <li key = {item.id}>{item.description}
               <button className = 'delete-button' onClick = {() => deleteTask(item.id)}>Delete</button>
             </li>
           ))
